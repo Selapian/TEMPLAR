@@ -32,7 +32,12 @@ function go() {
             }
         ]
     }, function(){
-        afterDOMLoaded()
+        afterDOMLoaded();
+        
+        //just a demonstration of pageREC(), you should initialize TEMPLAR.helm (as done above) to load functions in practice.
+        if(TEMPLAR.pageREC() === "set"){
+            redundant();
+        }
         
     });
 }
@@ -40,4 +45,10 @@ function go() {
 $(document).ready(function(){
     go();
 
+    //demonstration of TEMPLAR.DOM()
+    setTimeout(function(){
+       $("body").append("<a class='TEMPLAR node' href='#node?id=3">Node 3</a>")
+       TEMPLAR.DOM() //Now a.click() routes to #node automatically, and you can pick up by calling TEMPLAR.paramREC().id in the helm or external controller!
+    },7777)
 })
+
