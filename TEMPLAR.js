@@ -11,7 +11,7 @@ $(document).on("TEMPLAR", function() {
 });
 
 var TEMPLAR = { 
-    _dir: "client/PARTIALS",
+    _dir: "client/partials",
     _fade: false,
     _helm: [],
     _page : "home",
@@ -254,4 +254,5 @@ var TEMPLAR = {
         const parts = href.split('?');
         return parts.length > 1 ? "?" + parts[1] : "";
     }
+
 };
