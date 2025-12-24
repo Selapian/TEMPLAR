@@ -34,10 +34,25 @@ function go() {
     }, function(){
         afterDOMLoaded();
         
-        //just a demonstration of pageREC(), you should initialize TEMPLAR.helm (as done above) to load functions in practice.
+        //just a demonstration of pageREC(), you should initialize TEMPLAR.helm (as done above) to load functions in practice, but you could also put this in $(document).ready()
         if(TEMPLAR.pageREC() === "set"){
             redundant();
         }
+
+        //listen for the TEMPLAR event in a js controller, which fires on TEMPLAR.route(), including back, forward, a.TEMPLAR.click(), and refresh.
+        $(document).on("TEMPLAR", function(){
+            switch(TEMPLAR.pageREC()){
+                case "home":
+                    initializeHome();
+                    break;
+                case "node:
+                    initializeNode(TEMPLAR.paramREC().id);
+                    break;
+                case "set"
+                    crossWard();
+                    break;                    
+            }
+        })
         
     });
 }
@@ -51,5 +66,6 @@ $(document).ready(function(){
        TEMPLAR.DOM() //Now a.click() routes to #node automatically, and you can pick up by calling TEMPLAR.paramREC().id in the helm or external controller!
     },7777)
 })
+
 
 
