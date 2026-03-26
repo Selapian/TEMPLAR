@@ -10,4 +10,4 @@ TEMPLAR.paramREC() returns query-params as a JSON Object, so to get "?id=" you w
 
 TEMPLAR.pageREC() returns the page without the '#'. So you can do if(TEMPLAR.pageREC() !== "home") TEMPLAR.route("#home"). on $(document).ready().
 
-See dew.js 
+See index.js for the helm format!
