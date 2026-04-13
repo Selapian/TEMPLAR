@@ -1,16 +1,22 @@
-TEMPLAR is a client-side SPA router, of "TEMPLATES." TEMPLAR stores a "helm" which is an array of functions to be run mapped on each TEMPLATE. It requires JQuery (for now).
+TEMPLAR is a client-side SPA router, of "TEMPLATES." TEMPLAR stores a "helm" which is an array of functions to be run mapped on each TEMPLATE (partial) route. It requires JQuery (for now).
 
 TEMPLAR allows for setting params without changing the page, routing to an #ANCHOR, and updating the DOM so that a.TEMPLAR automatically routes (it's plug-and-play that way!)
 
-a.TEMPLAR.on(click) routes to the second class after TEMPLAR in the [a] tag. If you dynamically add an a.TEMPLAR tag to the DOM, you must call TEMPLAR.DOM() afterwards (synchronously) so that the anchor routes.
+a.TEMPLAR.on(click) routes to the second class after TEMPLAR in the [a] tag. If you dynamically add an a.TEMPLAR tag to the DOM, you must call TEMPLAR.DOM() afterwards (synchronously) so that the anchor routes, or alternatively use document.on("click", "a.TEMPLAR", function(){}).
 
-TEMPLAR.route("#partial_name") routes by #ANCHOR.
+TEMPLAR.route("#partial_name") routes by #ANCHOR. You must include the #partial_name as partial_name.html in your default partial 'dir'.
 
 TEMPLAR.paramREC() returns query-params as a JSON Object, so to get "?id=" you would do TEMPLAR.paramREC().id. It is currently best practice to check for TEMPLAR.paramREC() in your conditional, followed by && TEMPLAR.paramREC().uuid === '123', etc.
 
-TEMPLAR.pageREC() returns the page without the '#'. So you can do if(TEMPLAR.pageREC() !== "home") TEMPLAR.route("#home"). on $(document).ready().
+TEMPLAR.pageREC() returns the page without the '#'. e.g.:
+```
+        $(document).ready(function(){
+                if(TEMPLAR.pageREC() === "home")
+                        homeFn();
+        })
+```
 
-Set your default Template directory, helm (the automatic function calls when a partial is loaded), & defaultPage in the TEMPLAR.initialize() function. There is also a fade toggle.
+Set your default Template directory ('dir'), helm (the automatic function calls when a partial is loaded), & defaultPage in the TEMPLAR.initialize() function. TEMPLAR calls render() on defaultPage() on initialize. Helm is an array of objects mapped page, fn(). There is also a fade toggle for TEMPLATE transitions.
 
 HELM EXAMPLE:
 ```
