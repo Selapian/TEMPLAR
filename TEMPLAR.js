@@ -41,11 +41,12 @@ var TEMPLAR = {
             window.addEventListener('popstate', (event) => {
                 const target = that.pageREC();
                 
-                // Check if we are already on this page to avoid double-rendering
-                if (that.currentPage === target) {
-                    // Just update the helm/params if needed, don't re-render the whole HTML
+                // If the path has actually changed, we must re-disclose the Truth (render)
+                if (that.currentPage !== target) {
+                    $(document).trigger("TEMPLAR"); 
+                } else {
+                    // If only parameters changed, just update the helm rituals
                     that.helm(target); 
-                    return;
                 }
 
             });
