@@ -44,14 +44,16 @@ TEMPLAR.initialize({
 })
 ```
 
-INDEX.HTML:
+INDEX.HTML: (edit: had the wrong format, TEMPLAR should be parent)
 ```
 <header>
   <h1>My Website</h1>
 </header>
-<div class="TEMPLAR home">
-  <!--Renders content from client/partials/home.html, where dir is set in TEMPLAR.initialize() !-->
+<div class="TEMPLAR">
+        <div class="home"
+                <!--Renders content from client/partials/home.html, where dir is set in TEMPLAR.initialize() !-->
+        </div>
+        <div class="person">
+                <!--Renders content from client/partials/person.html, where dir is set in TEMPLAR.initialize() !-->
+        </div>
 </div>
-<div class="TEMPLAR person">
-  <!--Renders content from client/partials/person.html, where dir is set in TEMPLAR.initialize() !-->
-</div?
